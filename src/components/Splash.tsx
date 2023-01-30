@@ -1,12 +1,12 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/logo/logo.png";
+import { SplashWrap, SplashTitle } from "../styles/components/Splash";
 
 const Splash = () => {
   return (
-    <div>
-      <div>
-        <img src={logo} />
-      </div>
-    </div>
+    <SplashWrap>
+      <img src={logo} />
+      <SplashTitle>Study P.A</SplashTitle>
+    </SplashWrap>
   );
 };
 
