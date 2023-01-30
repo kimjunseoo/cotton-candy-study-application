@@ -22,7 +22,7 @@ export const InvalidUserSection = styled.div`
 export const InvalidUserTitle = styled.div`
   font-weight: bold;
   font-size: 33px;
-  margin-bottom: 8.5rem;
+  margin-bottom: 5.5rem;
 `;
 
 export const InvalidUserDesc = styled.div`

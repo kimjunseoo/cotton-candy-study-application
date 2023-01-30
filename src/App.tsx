@@ -6,7 +6,8 @@ import Splash from "./components/Splash";
 
 function App() {
   const [splash, setSplash] = useState<boolean>(true);
-  const userName = localStorage.getItem("StudyName");
+  const [storageName, setStorageName] = useState<string>("StudyName");
+  const localUserNameApi = localStorage.getItem(storageName);
 
   // 스플래시 2초 유지
   setTimeout(() => {
@@ -17,13 +18,13 @@ function App() {
 
   return (
     <div className="App">
-      {userName ? (
+      {localUserNameApi ? (
         <Routes>
           <Route path="/" element={<Logged />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path="/" element={<NotLogIn />} />
+          <Route path="/" element={<NotLogIn storageName={storageName} />} />
         </Routes>
       )}
     </div>
