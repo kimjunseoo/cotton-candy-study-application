@@ -3,7 +3,7 @@ import "../../index.css";
 
 export const LobbyWrap = styled.div`
   width: 100%;
-  height: 370px;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ export const LobbyWrap = styled.div`
 `;
 
 export const LobbyImgLogo = styled.img`
-  max-width: 200px;
+  max-width: 160px;
 `;
 
 export const LobbyTitle = styled.div`
