@@ -8,7 +8,6 @@ export const LobbyWrap = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #fafafa;
   overflow-y: hidden;
 `;
 

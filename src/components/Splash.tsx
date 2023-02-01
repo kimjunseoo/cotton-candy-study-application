@@ -5,7 +5,7 @@ const Splash = () => {
   return (
     <SplashWrap>
       <img src={logo} />
-      <SplashTitle>Study P.A</SplashTitle>
+      <SplashTitle>발표도우미</SplashTitle>
     </SplashWrap>
   );
 };

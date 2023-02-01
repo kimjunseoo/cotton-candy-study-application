@@ -19,12 +19,6 @@ export const InvalidUserSection = styled.div`
   overflow-y: hidden;
 `;
 
-export const InvalidUserTitle = styled.div`
-  font-weight: bold;
-  font-size: 33px;
-  margin-bottom: 5.5rem;
-`;
-
 export const InvalidUserDesc = styled.div`
   font-size: 17px;
   margin-bottom: 20px;

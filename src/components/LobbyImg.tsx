@@ -5,7 +5,7 @@ const LobbyImg = () => {
   return (
     <LobbyWrap>
       <LobbyImgLogo src={logo} />
-      <LobbyTitle>Study P.A</LobbyTitle>
+      <LobbyTitle>발표도우미</LobbyTitle>
     </LobbyWrap>
   );
 };

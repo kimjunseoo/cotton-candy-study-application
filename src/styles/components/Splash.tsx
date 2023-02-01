@@ -8,7 +8,6 @@ export const SplashWrap = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const SplashTitle = styled.div`
