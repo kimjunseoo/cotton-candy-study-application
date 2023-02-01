@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
 
 // Global States
 import { useRecoilValue } from "recoil";
@@ -13,6 +12,7 @@ import NotLogIn from "../components/NotLogIn";
 import MainPage from "./MainPage";
 
 const Router = () => {
+  // Global State로 등록된 LocalStorage API Key 값을 가져온다.
   const storageName = useRecoilValue(IsStorageName);
   const checkLogin = useRecoilValue(getLogged);
 

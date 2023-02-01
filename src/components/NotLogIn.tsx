@@ -11,6 +11,8 @@ interface StorageType {
 const NotLogin = (props: StorageType) => {
   const [userName, setUserName] = useState<string>("");
   const [logged, setLogged] = useRecoilState(getLogged);
+
+  /** 로그인 기능 함수 */
   const handleUserLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -25,6 +27,7 @@ const NotLogin = (props: StorageType) => {
     setLogged(true);
   };
 
+  /** 사용자가 입력한 value를 state함수에 저장 */
   const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },

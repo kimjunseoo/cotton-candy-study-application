@@ -15,6 +15,8 @@ import { useRecoilState } from "recoil";
 const InviteModal = () => {
   const [activityModal, setActivityModal] = useRecoilState(activeModal);
   const handleModalCancleBtn = () => setActivityModal(false);
+
+  const handleEnterRoomInBtn = () => console.log("방입장 소켓 연동시 이용가능");
   return (
     <InviteModalWrapper>
       <InviteModalBg>
@@ -23,7 +25,7 @@ const InviteModal = () => {
           <InviteModalInput type="text" />
           <InviteModalBtnWrapper>
             <InviteModalCancleBtn onClick={handleModalCancleBtn}>취소</InviteModalCancleBtn>
-            <InviteModalJoinBtn>입장</InviteModalJoinBtn>
+            <InviteModalJoinBtn onClick={handleEnterRoomInBtn}>입장</InviteModalJoinBtn>
           </InviteModalBtnWrapper>
         </InviteModalInfoWrap>
       </InviteModalBg>

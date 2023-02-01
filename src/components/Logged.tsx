@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LobbyImg from "./LobbyImg";
 import {
   LoginWrap,
@@ -9,7 +9,6 @@ import {
   LoginEnterRoomIn,
   LoginSearchFeedBack,
 } from "../styles/components/Logged";
-import { useNavigate } from "react-router-dom";
 
 import { activeModal } from "../store";
 import { useRecoilState } from "recoil";
@@ -26,6 +25,8 @@ const Logged = (props: StorageType) => {
   const path = useNavigate();
   const pathCreateRoom = () => path("/main");
   const pathFeedBack = () => path("/feedback");
+
+  /** 스터디룸 입장모달 활성화 */
   const handleModalShowBtn = () => setActivityModal(true);
 
   return (
