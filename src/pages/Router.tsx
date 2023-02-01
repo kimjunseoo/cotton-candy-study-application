@@ -1,8 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import Logged from "../components/Logged";
-import NotLogIn from "../components/NotLogIn";
+import { useEffect } from "react";
+
+// Global States
 import { useRecoilValue } from "recoil";
 import { IsStorageName, getLogged } from "../store";
+
+// components
+import Logged from "../components/Logged";
+import NotLogIn from "../components/NotLogIn";
+
+// pages
+import MainPage from "./MainPage";
 
 const Router = () => {
   const storageName = useRecoilValue(IsStorageName);
@@ -13,6 +21,7 @@ const Router = () => {
       {checkLogin ? (
         <Routes>
           <Route path="/" element={<Logged storageName={storageName} />} />
+          <Route path="/main" element={<MainPage />} />
         </Routes>
       ) : (
         <Routes>
