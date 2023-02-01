@@ -36,10 +36,15 @@ export const InviteModalInfoWrap = styled.div`
   align-items: center;
 `;
 export const InviteModalInput = styled.input`
-  width: 270px;
+  width: 260px;
   height: 30px;
   border-radius: 10px;
-  border: 1px solid orange;
+  border: 1px solid grey;
+  padding-left: 15px;
+  &:focus {
+    border: 1px solid darkorange;
+    outline: none;
+  }
 `;
 
 export const InviteModalBtnWrapper = styled.div`

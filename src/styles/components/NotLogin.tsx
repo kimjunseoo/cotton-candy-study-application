@@ -40,6 +40,10 @@ export const InvalidUserInput = styled.input`
   border-radius: 5px;
   border: 1px solid grey;
   padding-left: 10px;
+  &:focus {
+    border: 1px solid darkorange;
+    outline: none;
+  }
 `;
 
 export const InvalidUserBtn = styled.button`
