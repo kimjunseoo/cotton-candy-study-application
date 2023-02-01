@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, waitForAllSettled } from "recoil";
 
 export const IsStorageName = atom({
   key: "IsStorageName",
@@ -7,5 +7,10 @@ export const IsStorageName = atom({
 
 export const getLogged = atom({
   key: "getLoggded",
+  default: false,
+});
+
+export const activeModal = atom({
+  key: "activeModal",
   default: false,
 });
