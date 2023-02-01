@@ -10,12 +10,18 @@ import {
   LoginSearchFeedBack,
 } from "../styles/components/Logged";
 
-const Logged = () => {
+interface StorageType {
+  storageName: string;
+}
+
+const Logged = (props: StorageType) => {
+  const userName = localStorage.getItem(props.storageName);
+
   return (
     <LoginWrap>
       <LobbyImg />
       <LoginInfoWrapper>
-        <LoginUserName>솜사탕님, 환영합니다.</LoginUserName>
+        <LoginUserName>{userName}님, 환영합니다.</LoginUserName>
         <LoginCreateJoinWrapper>
           <LoginCreateRoom>새로운 스터디룸 생성하기</LoginCreateRoom>
           <LoginEnterRoomIn>친구들의 스터디룸 입장하기 (초대코드)</LoginEnterRoomIn>
