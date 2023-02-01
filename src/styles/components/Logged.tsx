@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const LoginWrap = styled.div`
   width: 100%;
-  height: 400px;
+  height: 300px;
 `;
 
 export const LoginInfoWrapper = styled.div`
@@ -10,8 +10,8 @@ export const LoginInfoWrapper = styled.div`
 `;
 
 export const LoginUserName = styled.div`
-  margin: 5.3rem 0;
-  font-size: 23px;
+  margin: 2rem 0;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
 `;
@@ -23,11 +23,11 @@ export const LoginCreateJoinWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 14px;
 `;
 
 export const LoginCreateRoom = styled.div`
-  padding: 14px 70px;
+  padding: 10px 50px;
   background-color: #ffd6eb;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -35,7 +35,7 @@ export const LoginCreateRoom = styled.div`
 `;
 
 export const LoginEnterRoomIn = styled.div`
-  padding: 14px 26px;
+  padding: 10px 12px;
   background-color: #fce9aa;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -43,7 +43,7 @@ export const LoginEnterRoomIn = styled.div`
 `;
 
 export const LoginSearchFeedBack = styled.div`
-  padding: 14px 102px;
+  padding: 10px 75px;
   background-color: #d6dbff;
   border-radius: 10px;
   cursor: pointer;
