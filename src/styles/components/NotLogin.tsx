@@ -39,11 +39,12 @@ export const InvalidUserForm = styled.form`
 `;
 
 export const InvalidUserInput = styled.input`
-  width: 350px;
+  width: 345px;
   height: 40px;
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid grey;
+  padding-left: 10px;
 `;
 
 export const InvalidUserBtn = styled.button`
