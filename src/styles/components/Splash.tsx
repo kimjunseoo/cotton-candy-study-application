@@ -10,6 +10,10 @@ export const SplashWrap = styled.div`
   flex-direction: column;
 `;
 
+export const SplashImgLogo = styled.img`
+  width: 220px;
+`;
+
 export const SplashTitle = styled.div`
   font-family: splashFonts;
   font-size: 50px;
