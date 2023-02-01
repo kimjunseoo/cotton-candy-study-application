@@ -11,7 +11,7 @@ export const NotLoginWrap = styled.div`
 
 export const InvalidUserSection = styled.div`
   width: 100%;
-  height: 400px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,8 @@ export const InvalidUserSection = styled.div`
 
 export const InvalidUserDesc = styled.div`
   font-size: 17px;
-  margin-bottom: 20px;
+  position: relative;
+  bottom: 60px;
 `;
 
 export const InvalidUserForm = styled.form`
@@ -33,7 +34,7 @@ export const InvalidUserForm = styled.form`
 `;
 
 export const InvalidUserInput = styled.input`
-  width: 345px;
+  width: 250px;
   height: 40px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -42,7 +43,7 @@ export const InvalidUserInput = styled.input`
 `;
 
 export const InvalidUserBtn = styled.button`
-  width: 358px;
+  width: 263px;
   height: 44px;
   background-color: orange;
   border-radius: 5px;
