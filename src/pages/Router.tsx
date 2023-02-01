@@ -2,14 +2,15 @@ import { Routes, Route } from "react-router-dom";
 import Logged from "../components/Logged";
 import NotLogIn from "../components/NotLogIn";
 import { useRecoilValue } from "recoil";
-import { IsStorageName } from "../store";
+import { IsStorageName, getLogged } from "../store";
 
 const Router = () => {
   const storageName = useRecoilValue(IsStorageName);
-  const localUserNameApi = localStorage.getItem(storageName);
+  const checkLogin = useRecoilValue(getLogged);
+
   return (
     <div>
-      {localUserNameApi ? (
+      {checkLogin ? (
         <Routes>
           <Route path="/" element={<Logged storageName={storageName} />} />
         </Routes>
