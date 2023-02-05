@@ -6,3 +6,14 @@ body {
   font-family: splashFonts;
   src: url("./assets//fonts/splashFonts.ttf");
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
