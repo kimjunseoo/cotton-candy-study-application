@@ -24,10 +24,12 @@ const Router = () => {
           <Route path="/" element={<Logged storageName={storageName} />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/feedback" element={<FeedBackPage />} />
+          <Route path="*" element={<Logged storageName={storageName} />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<NotLogIn storageName={storageName} />} />
+          <Route path="*" element={<NotLogIn storageName={storageName} />} />
         </Routes>
       )}
     </div>
