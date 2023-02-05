@@ -12,12 +12,12 @@ export const InviteModalWrapper = styled.div`
 
 export const InviteModalBg = styled.div`
   width: 400px;
-  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
+  padding: 2rem 1rem;
   background-color: white;
   border-radius: 15px;
 `;
@@ -26,7 +26,7 @@ export const InviteModalTitle = styled.div`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
-  padding-top: 30px;
+  padding: 1rem 0;
 `;
 
 export const InviteModalInfoWrap = styled.div`
@@ -36,11 +36,12 @@ export const InviteModalInfoWrap = styled.div`
   align-items: center;
 `;
 export const InviteModalInput = styled.input`
+  text-align: center;
   width: 260px;
-  height: 30px;
   border-radius: 10px;
   border: 1px solid grey;
-  padding-left: 15px;
+  padding: 0.4rem;
+  font-size: 3rem;
   &:focus {
     border: 1px solid darkorange;
     outline: none;
@@ -56,18 +57,28 @@ export const InviteModalBtnWrapper = styled.div`
 
 export const InviteModalCancleBtn = styled.span`
   padding: 15px 45px;
-  background-color: grey;
+  background-color: #414141;
   color: white;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
 `;
 
-export const InviteModalJoinBtn = styled.span`
+export const InviteModalJoinBtnActive = styled.span`
   padding: 15px 50px;
-  background-color: red;
+  background-color: #ff3d3d;
   color: white;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+`;
+
+export const InviteModalJoinBtnDisabled = styled.span`
+  padding: 15px 50px;
+  opacity: 50%;
+  background-color: #ff3d3d;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: default;
 `;
