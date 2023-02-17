@@ -1,4 +1,4 @@
-import { Feadback, UserFeadbacks } from "../Models/feadback";
+import { UserFeadbacks } from "../Models/feadback";
 
 const createFeadback = async (req, res) => {
     /*
@@ -6,35 +6,45 @@ const createFeadback = async (req, res) => {
      * body
      * {
      *   "roomCode" : 1024,
-     *   "giverNickname" : "어쩌고",
+     *   "giverName" : "어쩌고",
      *   "evaluatedName" : "누구누구",
      *   "message" : "이러고 저렇고 해서 얼마 드려요", 
      * }
      */
 
-    const {roomCode, giverNickname, evaluatedName, message} = req.params;
-    console.log(roomCode, giverNickname, evaluatedName, message);
-
+    const {roomCode, giverName, evaluatedName, message} = req.body;
+    
     const feadbackInfo = {
         roomCode,
         evaluatorName : giverName,
         content : message,
-    } 
-    const addFeadbackResult = await UserFeadbacks.updateOne({ evaluatedName : evaluatedName }, { $push : { feadbacks : feadbackInfo } })
-    console.log(addFeadbackResult);
-
-    return res.status(201).json({"message": "success"});
+    }
+    const addFeadbackResult = await UserFeadbacks.findOneAndUpdate(
+        { evaluatedName : evaluatedName }, 
+        { $push : 
+            { feadbacks : feadbackInfo}
+        }
+    );
+    
+    return res.status(201).json(addFeadbackResult);
 }
 
 const getMyFeadbacks = async (req, res) => {
     /*
      * 일단 URL path로 전달 가정 
      * feadback/myfeadback?iam="닉네임"
-     */
+    */
+
+    const nickname = req.query.iam || null;
+    if (!nickname) {
+        return res.status(200).json({"message": "insert nickname"});
+    }
+
+    let myfeadback = await UserFeadbacks.findOne({ evaluatedName : nickname});
     
-    const nickname = req.params.iam ?? "test";
-    console.log(nickname, typeof nickname);
-    const myfeadback = await UserFeadbacks.find({ evaluatorName : nickname});
+    if (!myfeadback) {
+        myfeadback = {"message" : "no feadbacks"};
+    }
 
     return res.status(200).json(myfeadback);
 }
