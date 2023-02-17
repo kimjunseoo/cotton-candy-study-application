@@ -19,6 +19,10 @@ const createFeadback = async (req, res) => {
         evaluatorName : giverName,
         content : message,
     }
+    const evaluatedUser = await UserFeadbacks.findOne({evaluatedName : evaluatedName});
+    if (!evaluatedUser) {
+        return res.status(404).json({"message" : "no user"});
+    }
     const addFeadbackResult = await UserFeadbacks.findOneAndUpdate(
         { evaluatedName : evaluatedName }, 
         { $push : 
