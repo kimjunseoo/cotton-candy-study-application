@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import globalRouter from "./Routers/globalRouter.js";
 import path from "path";
 import Room from "./Models/room.js";
+import apiRouter from "./Routers/apiRouter.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/assets", express.static(__dirname+"/dist/assets"));
 app.use("/", globalRouter);
-
+app.use("/api", apiRouter);
 
 wsServer.on("connection", (socket) => {
     // Socket 닉네임 설정 
