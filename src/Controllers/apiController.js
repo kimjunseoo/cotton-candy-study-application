@@ -10,17 +10,17 @@ function generateRandomCode(n) {
 
 export const genNewRoom = async (req, res) => {
     //4자리 랜덤 난수의 초대 코드 생성
-    let inviteCode = generateRandomCode(4);
+    const inviteCode = generateRandomCode(4);
 
     //초대 코드 중복 여부 검사
     const roomExist = await Room.exists({ inviteCode: inviteCode });
-
+    console.log(roomExist);
     if(roomExist){
         return genNewRoom();
     }
 
     try{
-        Room.create({
+        await Room.create({
             inviteCode: inviteCode
         })
     } catch(error) {
@@ -31,7 +31,7 @@ export const genNewRoom = async (req, res) => {
 
     return res.status(200).json({
         inviteCode: inviteCode
-    })
+    });
 };
 
 export const callRoom = async (req, res) => {
