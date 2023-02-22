@@ -39,7 +39,7 @@ export const callRoom = async (req, res) => {
 
     const inviteCodeExist = await Room.exists( { inviteCode: inviteCode } );
 
-    if(!inviteCode){
+    if(!inviteCodeExist){
         return  res.status(500).json({
             result: false
         })
