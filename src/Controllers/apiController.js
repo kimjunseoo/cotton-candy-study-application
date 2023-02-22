@@ -14,7 +14,7 @@ export const genNewRoom = async (req, res) => {
     const roomExist = await Room.exists({ inviteCode: inviteCode });
 
     if(roomExist){
-        return res.status(503);
+        return genNewRoom();
     }
 
     try{
@@ -29,13 +29,13 @@ export const genNewRoom = async (req, res) => {
 };
 
 export const callRoom = async (req, res) => {
-    const inviteCode = req.body.roomcode;
+    const inviteCode = req.body.inviteCode;
 
     const inviteCodeExist = await Room.exists( { inviteCode: inviteCode } );
 
     if(!inviteCode){
-        return res.status(503);
+        return false;
     };
 
-    return inviteCode;
+    return true;
 }
