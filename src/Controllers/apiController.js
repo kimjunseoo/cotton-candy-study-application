@@ -24,10 +24,14 @@ export const genNewRoom = async (req, res) => {
             inviteCode: inviteCode
         })
     } catch(error) {
-        return error;
+        return res.status(500).json({
+            error: error
+        });
     }
 
-    return inviteCode;
+    return res.status(200).json({
+        inviteCode: inviteCode
+    })
 };
 
 export const callRoom = async (req, res) => {
@@ -36,8 +40,12 @@ export const callRoom = async (req, res) => {
     const inviteCodeExist = await Room.exists( { inviteCode: inviteCode } );
 
     if(!inviteCode){
-        return false;
+        return  res.status(500).json({
+            result: false
+        })
     };
 
-    return true;
-}
+    return  res.status(200).json({
+        result: true
+    });
+};
