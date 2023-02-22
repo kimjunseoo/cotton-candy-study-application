@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "server": "nodemon",
-    "start": "nodemon --exec babel-node server.js"
+    "start": "nodemon --exec babel-node src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
