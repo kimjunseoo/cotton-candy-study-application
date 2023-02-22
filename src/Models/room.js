@@ -8,6 +8,6 @@ const roomSchema = new mongoose.Schema({
 
 const Room = mongoose.model("Room", roomSchema);
 
-Room.schema.index( {createdAt:1}, {expireAfterSeconds: 60 } );
+Room.schema.index( {createdAt:1}, {expireAfterSeconds: 7889400 } );
 
 export default Room;
