@@ -39,10 +39,24 @@ wsServer.on("connection", (socket) => {
         const room = await Room.findOne({ inviteCode: inviteCode });
 
         room.members.push(username);
+        const members = room.members;
+
+        // 프론트에서 필요한 맴버 배열 전달
+        socket.emit("memberList", members);
+
         room.save();
 
-        socket.to(inviteCode).emit("welcome", username);
+        socket.to(inviteCode).emit("welcome", username, members);
     });
+    // 방 나가기 버튼을 클릭하였을 때, 받아오는 이벤트 
+    socket.on("leave", (inviteCode, username ) => {
+
+        //room 에서 leave 처리
+        socket.leave(inviteCode);
+
+        socket.to(inviteCode).emit("bye", username);
+    });
+    // 브라우저를 껐을 때, 받아오는 이벤트 
     socket.on("disconnecting", () => {
         socket.rooms.forEach((room) => socket.to(room).emit("bye", socket.nickname));
     });
