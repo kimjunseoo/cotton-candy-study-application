@@ -22,23 +22,51 @@ app.use("/api", apiRouter);
 
 wsServer.on("connection", (socket) => {
 
-    // For Debug, 이벤트 감지 
-    socket.onAny((event) => {
-        console.log(`Socket Event: ${event}`);
-    });
+    // 방 생성 후 입장 시 발생하는 이벤트
+    socket.on("createAndJoinRoom", async (inviteCode, username) => {
 
-    // 방 입장 시 발생하는 이벤트
-    socket.on("enterRoom", async (inviteCode, username) => {
-        //socket 방 참가
-        socket.join(inviteCode);
-
-        //socket 닉네임 저장
-        socket["nickname"] = username;
-
-        // DB rooms 도큐먼트의 members 필드에 소켓 닉네임 저장
         const room = await Room.findOne({ inviteCode: inviteCode });
 
-        room.members.push(username);
+        const userInfo = {
+            rank: 1,
+            username: username
+        };
+
+        // socket 방 참가
+        socket.join(inviteCode);
+
+        // socket nickname 설정
+        socket["nickname"] = username;
+
+        // DB 멤버 배열에 유저 정보 추가
+        room.members.push(userInfo);
+        const members = room.members;
+
+        // 프론트에서 필요한 맴버 배열 전달
+        socket.emit("memberList", members);
+
+        room.save();
+
+        socket.to(inviteCode).emit("welcome", username, members);
+    });
+    // 방 검색 후 입장 시 발생하는 이벤트
+    socket.on("searchAndJoinRoom", async (inviteCode, username) => {
+        
+        const room = await Room.findOne({ inviteCode: inviteCode });
+
+        const userInfo = {
+            rank: 0,
+            username: username
+        };
+
+        // socket 방 참가
+        socket.join(inviteCode);
+
+        // socket nickname 설정
+        socket["nickname"] = username;
+
+        // DB 멤버 배열에 유저 정보 추가
+        room.members.push(userInfo);
         const members = room.members;
 
         // 프론트에서 필요한 맴버 배열 전달
