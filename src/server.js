@@ -43,7 +43,7 @@ wsServer.on("connection", (socket) => {
         const members = room.members;
 
         // 프론트에서 필요한 맴버 배열 전달
-        socket.emit("memberList", members);
+        socket.to(inviteCode).emit("memberList", members);
 
         room.save();
 
@@ -70,7 +70,7 @@ wsServer.on("connection", (socket) => {
         const members = room.members;
 
         // 프론트에서 필요한 맴버 배열 전달
-        socket.emit("memberList", members);
+        socket.to(inviteCode).emit("memberList", members);
 
         room.save();
 
