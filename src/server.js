@@ -21,73 +21,48 @@ app.use("/", globalRouter);
 app.use("/api", apiRouter);
 
 wsServer.on("connection", (socket) => {
-
-    // 방 생성 후 입장 시 발생하는 이벤트
-    socket.on("createAndJoinRoom", async (inviteCode, username) => {
-
-        const room = await Room.findOne({ inviteCode: inviteCode });
-
-        const userInfo = {
-            rank: 1,
-            username: username
-        };
-
-        // socket 방 참가
-        socket.join(inviteCode);
-
-        // socket nickname 설정
-        socket["nickname"] = username;
-
-        // DB 멤버 배열에 유저 정보 추가
-        room.members.push(userInfo);
-        const members = room.members;
-
-        // 프론트에서 필요한 맴버 배열 전달
-        socket.to(inviteCode).emit("memberList", members);
-
-        room.save();
-
-        socket.to(inviteCode).emit("welcome", username, members);
+    // For Debug, 이벤트 감지
+    socket.onAny((event) => {
+      console.log(`Socket Event: ${event}`);
     });
-    // 방 검색 후 입장 시 발생하는 이벤트
-    socket.on("searchAndJoinRoom", async (inviteCode, username) => {
-        
-        const room = await Room.findOne({ inviteCode: inviteCode });
-
-        const userInfo = {
-            rank: 0,
-            username: username
-        };
-
-        // socket 방 참가
-        socket.join(inviteCode);
-
-        // socket nickname 설정
-        socket["nickname"] = username;
-
-        // DB 멤버 배열에 유저 정보 추가
-        room.members.push(userInfo);
-        const members = room.members;
-
-        // 프론트에서 필요한 맴버 배열 전달
-        socket.to(inviteCode).emit("memberList", members);
-
-        room.save();
-
-        socket.to(inviteCode).emit("welcome", username, members);
+  
+    // 방 입장 시 발생하는 이벤트
+    socket.on("enterRoom", async (inviteCode, username) => {
+      //socket 방 참가
+      socket.join(inviteCode);
+  
+      //socket 닉네임 저장
+      socket["nickname"] = username;
+  
+      // DB rooms 도큐먼트의 members 필드에 소켓 닉네임 저장
+      const room = await Room.findOne({ inviteCode: inviteCode });
+  
+      room.members.push(username);
+      const members = room.members;
+  
+      // 프론트에서 필요한 맴버 배열 전달
+      socket.emit("memberList", members);
+  
+      room.save();
+  
+      socket.to(inviteCode).emit("welcome", username, members);
     });
-    // 방 나가기 버튼을 클릭하였을 때, 받아오는 이벤트 
-    socket.on("leave", (inviteCode, username ) => {
-
-        //room 에서 leave 처리
-        socket.leave(inviteCode);
-
-        socket.to(inviteCode).emit("bye", username);
+    // 방 나가기 버튼을 클릭하였을 때, 받아오는 이벤트
+    socket.on("leave", async (inviteCode, username) => {
+      const room = await Room.findOne({ inviteCode: inviteCode });
+      const data = room.members.filter((data) => data !== username);
+      socket.to(inviteCode).emit("welcome", username, data);
+      //room 에서 leave 처리
+      socket.leave(inviteCode);
+  
+      socket.to(inviteCode).emit("bye", username);
     });
-    // 브라우저를 껐을 때, 받아오는 이벤트 
+    // 브라우저를 껐을 때, 받아오는 이벤트
     socket.on("disconnecting", () => {
-        socket.rooms.forEach((room) => socket.to(room).emit("bye", socket.nickname));
+      socket.rooms.forEach((room) => socket.to(room).emit("bye", socket.nickname));
     });
-});
-
-server.listen(3002, () => { console.log("*****HTTP/WS SERVER ON*****")});
+  });
+  
+  server.listen(3002, () => {
+    console.log("*****HTTP/WS SERVER ON*****");
+  });
