@@ -13,8 +13,8 @@ dist-ssr
 *.local
 .env
 build
-.docketignore
-Docketfile
+.dockerignore
+Dockerfile
 fly.toml
 
 # Editor directories and files
