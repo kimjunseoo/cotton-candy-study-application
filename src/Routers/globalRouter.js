@@ -5,6 +5,6 @@ import cors from "cors";
 const __dirname = path.resolve();
 const globalRouter = express.Router();
 
-globalRouter.use("/", cors({ origin: "http://localhost:5173" }));
+globalRouter.use("/", cors({ origin: "https://cottoncandy-study.netlify.app" }));
 
 export default globalRouter;

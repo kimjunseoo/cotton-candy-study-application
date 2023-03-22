@@ -4,7 +4,7 @@ import { callRoom, genNewRoom } from "../Controllers/apiController";
 
 const apiRouter = express.Router();
 
-apiRouter.use("/", cors({ origin: "http://localhost:5173" })); 
+apiRouter.use("/", cors({ origin: "https://cottoncandy-study.netlify.app" })); 
 apiRouter.post("/rooms/:inviteCode", callRoom);
 apiRouter.post("/rooms", genNewRoom);
 

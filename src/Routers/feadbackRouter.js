@@ -4,7 +4,7 @@ import { createFeadback, getMyFeadbacks, getTempMessage } from "../Controllers/F
 
 const feadbackRouter = express.Router();
 
-feadbackRouter.use("/", cors({ origin: "http://localhost:5173" }));
+feadbackRouter.use("/", cors({ origin: "https://cottoncandy-study.netlify.app" }));
 feadbackRouter.route("/create").post(createFeadback);
 feadbackRouter.route("/myfeadback").get(getMyFeadbacks);
 
